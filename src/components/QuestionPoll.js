@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../utils/helpers";
+import { handleAnswerQuestion } from "../actions/questions";
 import { Redirect } from "react-router-dom";
-
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
-  console.log("HERE", id)
   return {
     authedUser,
     question: question
@@ -22,11 +21,17 @@ class QuestionPoll extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { dispatch } = this.props;
+
+    // submit
+    // console.log(this.state.selected);
+    // console.log(this.props.question.id);
+
+    dispatch(handleAnswerQuestion(this.props.question.id, this.state.selected));
   };
 
   handleChange = (e) => {
     const text = e.target.value;
-    console.log(text);
 
     this.setState({
       selected: text,
@@ -35,7 +40,7 @@ class QuestionPoll extends Component {
 
   render() {
     const { question } = this.props;
-console.log(question)
+    // console.log(question)
 
     const {
       name,
@@ -48,7 +53,7 @@ console.log(question)
     } = question;
 
     if (hasVoted) {
-      return <Redirect to={`/question/${id}/results`} />
+      return <Redirect to={`/question/${id}/results`} />;
     }
 
     return (
@@ -66,7 +71,7 @@ console.log(question)
                 name="optionOne"
                 value="optionOne" // {optionOne.text}
                 onChange={this.handleChange}
-                checked={this.state.selected === 'optionOne'}
+                checked={this.state.selected === "optionOne"}
               />
               <label htmlFor="optionOne">{optionOne.text}</label>
             </div>
@@ -77,7 +82,7 @@ console.log(question)
                 name="optionTwo"
                 value="optionTwo"
                 onChange={this.handleChange}
-                checked={this.state.selected === 'optionTwo'}
+                checked={this.state.selected === "optionTwo"}
               />
               <label htmlFor="optionTwo">{optionTwo.text}</label>
             </div>

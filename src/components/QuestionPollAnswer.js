@@ -30,7 +30,7 @@ class QuestionPollAnswer extends Component {
     const optionTwoVotes = optionTwo.votes.length;
     const voteNumber = optionOneVotes + optionTwoVotes;
 
-    console.log(optionTwo);
+    // console.log(optionTwo);
 
     return (
       <div className="question">
@@ -44,13 +44,13 @@ class QuestionPollAnswer extends Component {
             <br></br>
             {`${optionOneVotes} of ${voteNumber} people voted`}
 
-            {optionOne.votes.includes(authedUser) && 'yes' }
+            {optionOne.votes.includes(authedUser) && ' - you voted this' }
           </div>
           <div>
             {optionTwo.text}
             <br></br>
             {`${optionTwoVotes} of ${voteNumber} people voted`}
-            {optionTwo.votes.includes(authedUser) && 'yes' }
+            {optionTwo.votes.includes(authedUser) && ' - you voted this' }
           </div>
         </div>
       </div>

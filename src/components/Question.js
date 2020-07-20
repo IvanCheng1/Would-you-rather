@@ -3,44 +3,47 @@ import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
-  const question = questions[id];
+function mapStateToProps({ authedUser, users, questions }, { id, activeTab }) {
+  let question = questions[id];
+
   return {
     authedUser,
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
       : null,
+    activeTab,
   };
 }
 
 class Question extends Component {
   render() {
-    const { question, authedUser } = this.props;
+    const { question, authedUser, activeTab } = this.props;
 
     if (question === null) {
       return <p>This Question does not exist</p>;
     }
 
-    // console.log(this.props)
-
-    const {
-      name,
-      id,
-      timestamp,
-      avatar,
-      optionOne,
-      optionTwo,
-      hasVoted,
-    } = question;
+    const { name, id, timestamp, avatar, optionOne, optionTwo } = question;
 
     let redirect = "";
-    if (
+    const hasVoted =
       question.optionOne.votes.includes(authedUser) ||
-      question.optionTwo.votes.includes(authedUser)
-    ) {
-      redirect = `/question/${id}/results`;
-    } else {
-      redirect = `/question/${id}`;
+      question.optionTwo.votes.includes(authedUser);
+
+    if (activeTab === "unanswered") {
+      if (hasVoted) {
+        // don't show question as it's been answered by authed user
+        return false;
+      } else {
+        redirect = `/question/${id}`;
+      }
+    } else if (activeTab === "answered") {
+      if (hasVoted) {
+        redirect = `/question/${id}/results`;
+      } else {
+        // don't show question as it's not been answered by authed user
+        return false;
+      }
     }
 
     return (

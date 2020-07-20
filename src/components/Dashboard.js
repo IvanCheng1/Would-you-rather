@@ -43,9 +43,7 @@ class Dashboard extends Component {
         <h3 className="center">Questions</h3>
         <ul className="dashboard-list">
           {this.props.questionIds.map((id) => (
-            <li key={id}>
-              <Question id={id} activeTab={this.state.activeTab}/>
-            </li>
+              <Question key={id} id={id} activeTab={this.state.activeTab}/>
           ))}
         </ul>
       </div>

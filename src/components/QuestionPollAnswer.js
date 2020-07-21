@@ -48,7 +48,9 @@ class QuestionPollAnswer extends Component {
                 optionOne.votes.includes(authedUser) && "chosen"
               }`}
             >
-              <div className="your-vote">Your vote</div>
+              <div className="badge">
+                <div className="your-vote">Your vote</div>
+              </div>
               <p>{optionOne.text}</p>
 
               <div className="percentage-border">
@@ -67,9 +69,10 @@ class QuestionPollAnswer extends Component {
               className={`question-results-options ${
                 optionTwo.votes.includes(authedUser) && "chosen"
               }`}
-            > 
-
+            >
+              <div className="badge">
                 <div className="your-vote">Your vote</div>
+              </div>
               <p>{optionTwo.text}</p>
 
               <div className="percentage-border">

@@ -26,15 +26,15 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <nav className="nav">
+        <nav className="nav-tabs">
           <ul>
             <li>
-              <button type="button" onClick={this.handleTab} value="unanswered" className={this.state.activeTab === "unanswered" ? "btn active" : "btn"}>
+              <button type="button" onClick={this.handleTab} value="unanswered" className={this.state.activeTab === "unanswered" ? "tab tab-active" : "tab"}>
                 Unanswered Questions
               </button>
             </li>
             <li>
-              <button type="button" onClick={this.handleTab} value="answered" className={this.state.activeTab === "answered" ? "btn active" : "btn"}>
+              <button type="button" onClick={this.handleTab} value="answered" className={this.state.activeTab === "answered" ? "tab tab-active" : "tab"}>
                 Answered Questions
               </button>
             </li>

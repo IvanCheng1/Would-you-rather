@@ -54,7 +54,7 @@ class NewQuestions extends Component {
 
     return (
       <div>
-        <h3 className="centre">Would you rather...</h3>
+        <h2 className="centre">Would you rather...</h2>
         <form className="new-question" onSubmit={this.handleSubmit}>
           <textarea
             placeholder="Option One"
@@ -63,7 +63,7 @@ class NewQuestions extends Component {
             className="textarea"
             maxLength={300}
           />
-          OR
+          <div className="or-text">OR</div>
           <textarea
             placeholder="Option Two"
             value={optionTwoText}
@@ -72,7 +72,7 @@ class NewQuestions extends Component {
             maxLength={300}
           />
           <button
-            className="btn"
+            className="btn new-question-btn"
             type="submit"
             disabled={optionOneText === "" || optionTwoText === ""}
           >

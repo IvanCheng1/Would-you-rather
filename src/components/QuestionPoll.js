@@ -54,43 +54,46 @@ class QuestionPoll extends Component {
     }
 
     return (
-      <div className="question">
-        <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+      <div className="question-poll">
+        <div className="profile-name">{name} asks</div>
 
         <div className="question-info">
-          <span>{name} asks</span>
-          <h3>Would you rather...</h3>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <input
-                type="radio"
-                id="optionOne"
-                name="optionOne"
-                value="optionOne" // {optionOne.text}
-                onChange={this.handleChange}
-                checked={this.state.selected === "optionOne"}
-              />
-              <label htmlFor="optionOne">{optionOne.text}</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="optionTwo"
-                name="optionTwo"
-                value="optionTwo"
-                onChange={this.handleChange}
-                checked={this.state.selected === "optionTwo"}
-              />
-              <label htmlFor="optionTwo">{optionTwo.text}</label>
-            </div>
-            <button
-              className="btn"
-              type="submit"
-              disabled={this.state.selected === ""}
-            >
-              Submit
-            </button>
-          </form>
+          <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+
+          <div>
+            <h2>Would you rather...</h2>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <input
+                  type="radio"
+                  id="optionOne"
+                  name="optionOne"
+                  value="optionOne" // {optionOne.text}
+                  onChange={this.handleChange}
+                  checked={this.state.selected === "optionOne"}
+                />
+                <label htmlFor="optionOne">{optionOne.text}</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="optionTwo"
+                  name="optionTwo"
+                  value="optionTwo"
+                  onChange={this.handleChange}
+                  checked={this.state.selected === "optionTwo"}
+                />
+                <label htmlFor="optionTwo">{optionTwo.text}</label>
+              </div>
+              <button
+                className="btn"
+                type="submit"
+                disabled={this.state.selected === ""}
+              >
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     );

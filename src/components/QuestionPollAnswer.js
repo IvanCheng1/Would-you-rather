@@ -29,28 +29,61 @@ class QuestionPollAnswer extends Component {
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;
     const voteNumber = optionOneVotes + optionTwoVotes;
+    const optionOnePerc = Math.round((1000 * optionOneVotes) / voteNumber) / 10;
+    const optionTwoPerc = Math.round((1000 * optionTwoVotes) / voteNumber) / 10;
 
     // console.log(optionTwo);
 
     return (
-      <div className="question">
-        <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+      <div className="question-poll">
+        <div className="profile-name">Asked by {name}</div>
 
         <div className="question-info">
-          <span>Asked by {name}</span>
-          <h3>Results:</h3>
-          <div>
-            {optionOne.text}
-            <br></br>
-            {`${optionOneVotes} of ${voteNumber} people voted`}
+          <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
 
-            {optionOne.votes.includes(authedUser) && ' - you voted this' }
-          </div>
-          <div>
-            {optionTwo.text}
-            <br></br>
-            {`${optionTwoVotes} of ${voteNumber} people voted`}
-            {optionTwo.votes.includes(authedUser) && ' - you voted this' }
+          <div className="question-results">
+            <h2>Results:</h2>
+            <div
+              className={`question-results-options ${
+                optionOne.votes.includes(authedUser) && "chosen"
+              }`}
+            >
+              <div className="your-vote">Your vote</div>
+              <p>{optionOne.text}</p>
+
+              <div className="percentage-border">
+                <div
+                  className="percentage-fill"
+                  style={{ width: optionOnePerc + "%" }}
+                >
+                  <div className="percentage-number">{optionOnePerc}%</div>
+                </div>
+              </div>
+              <div className="question-votes">
+                {`${optionOneVotes} out of ${voteNumber} people voted`}
+              </div>
+            </div>
+            <div
+              className={`question-results-options ${
+                optionTwo.votes.includes(authedUser) && "chosen"
+              }`}
+            > 
+
+                <div className="your-vote">Your vote</div>
+              <p>{optionTwo.text}</p>
+
+              <div className="percentage-border">
+                <div
+                  className="percentage-fill"
+                  style={{ width: optionTwoPerc + "%" }}
+                >
+                  <div className="percentage-number">{optionTwoPerc}%</div>
+                </div>
+              </div>
+              <div className="question-votes">
+                {`${optionTwoVotes} out of ${voteNumber} people voted`}
+              </div>
+            </div>
           </div>
         </div>
       </div>

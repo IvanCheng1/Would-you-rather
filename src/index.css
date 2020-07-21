@@ -93,54 +93,114 @@ li {
   /* cursor: pointer; */
 }
 
+.question-poll {
+  /* width: 100%; */
+  max-width: 590px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  /* cursor: pointer; */
+}
+
 .question-info {
   margin: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.question-results {
+  width: 100%;
+}
+
+.question-results-options {
+  border: 1px solid #dad7d7;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 15px;
+}
+
+.question-results-options {
+  border: 1px solid #dad7d7;
+  margin: 10px 0;
+}
+
+.question-votes {
+  text-align: center;
+  padding: 10px 0 0 0 ;
+}
+
+.chosen {
+  border: 3px solid rgba(13, 174, 177, 0.776);
+  background-color: rgba(13, 174, 177, 0.2);
+  position: relative;
+  
+}
+
+.your-vote {
+  display: none;
+  background-color: rgba(172, 216, 37, 1);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.chosen .your-vote {
+  display: table-cell;
+  
+  position: absolute;
+  /* left: 35px; */
+  top: -10px;
+  right: -10px;
 }
 
 /* Hacky but less typing in the video */
-.question-info > div > span:first-child {
+/* .question-info > div > span:first-child {
   font-weight: bold;
   margin-right: 5px;
-}
-.question-info > div > span:nth-child(2) {
+} */
+/* .question-info > div > span:nth-child(2) {
   color: #969696;
   font-size: 16px;
-}
-.question-info > div > div {
+} */
+/* .question-info > div > div {
   color: #969696;
   font-size: 15px;
-}
-.question-info > div > p {
+} */
+/* .question-info > div > p {
   font-size: 18px;
   margin: 10px 0;
-}
-.question-icons {
+} */
+/* .question-icons {
   display: flex;
   align-items: center;
-}
-.question-icons > span {
+} */
+/* .question-icons > span {
   color: #969696;
   margin: 0 15px 0 5px;
   font-size: 18px !important;
-}
-.question-icon {
+} */
+/* .question-icon {
   font-size: 27px;
   color: #697784;
-}
-.question-icon:hover {
+} */
+/* .question-icon:hover {
   color: #00b5d6;
   cursor: pointer;
-}
-.replying-to {
+} */
+/* .replying-to {
   border: none;
   background: transparent;
   margin: 0;
   padding: 0;
   color: #969696;
   cursor: pointer;
-}
+} */
 
 .new-question {
   width: 100%;
@@ -268,4 +328,32 @@ li {
   margin: auto;
   display: flex;
   flex-direction: row;
+}
+
+form div {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+.percentage-border {
+  border: 1px solid rgba(13, 174, 177, 0.776);
+  height: 30px;
+  border-radius: 5px;
+}
+
+.percentage-fill {
+  background-color: rgba(13, 174, 177, 0.776);
+  height: 30px;
+  border-radius: 3px;
+  /* text-align: right; */
+  /* padding-right: 10px; */
+}
+
+.percentage-number {
+
+  /* height: 30px; */
+  /* border-radius: 5px; */
+  text-align: right;
+  padding-right: 4px;
+  line-height: 30px;
 }

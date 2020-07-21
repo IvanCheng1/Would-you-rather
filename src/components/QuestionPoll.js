@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion, formatDate } from "../utils/helpers";
 import { handleAnswerQuestion } from "../actions/questions";
+import { handleAddAnswerToUser } from "../actions/users";
 import { Redirect } from "react-router-dom";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
@@ -22,10 +23,6 @@ class QuestionPoll extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { dispatch } = this.props;
-
-    // submit
-    // console.log(this.state.selected);
-    // console.log(this.props.question.id);
 
     dispatch(handleAnswerQuestion(this.props.question.id, this.state.selected));
   };

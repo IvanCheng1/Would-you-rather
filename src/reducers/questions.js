@@ -3,6 +3,7 @@ import { RECEIVE_QUESTIONS, ADD_QUESTION, ANSWER_QUESTION } from "../actions/que
 export default function questions(state = {}, action) {
   switch (action.type) {
     case RECEIVE_QUESTIONS :
+      console.log("THIS", action)
       return {
         ...state,
         ...action.questions,
@@ -15,8 +16,8 @@ export default function questions(state = {}, action) {
         [action.question.id]: action.question
       }
     case ANSWER_QUESTION :
-      console.log("ANSWER state",state)
-      console.log("ANSWER action",action)
+      // console.log("ANSWER state",state)
+      // console.log("ANSWER action",action)
       return {
         ...state,
         [action.qid]: {

@@ -47,17 +47,18 @@ class Question extends Component {
     }
 
     return (
-      <Link to={redirect} className="question">
+      <div className="question">
         <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
 
         <div className="question-info">
           <span>{name}</span>
           <div>{formatDate(timestamp)}</div>
-          Would you rather...
-          <p>{`${optionOne.text.slice(0, 15).trim()}...`}</p>
-          <button className="btn">View Poll</button>
+          <p>{`Would you rather ${optionOne.text.slice(0, 15).trim()}... or...`}</p>
+          <Link to={redirect}>
+            <button className="btn">View Poll</button>
+          </Link>
         </div>
-      </Link>
+      </div>
     );
   }
 }

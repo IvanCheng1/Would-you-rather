@@ -18,7 +18,7 @@ a {
 
 .btn {
   text-transform: uppercase;
-  margin: 35px auto;
+  margin: 15px auto;
   padding: 10px;
   border: 1px solid rgba(0,0,0,.29);
   cursor: pointer;
@@ -69,9 +69,9 @@ li {
 }
 
 .avatar {
-  height: 50px;
-  border-radius: 25px;
-  margin: 10px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 25px;
 }
 
 .question {
@@ -155,4 +155,55 @@ li {
   margin-top: 10px;
   font-size: 20px;
   color: #C3392A;
+}
+
+.profile {
+  width: 100%;
+  max-width: 590px;
+  padding: 10px;
+  flex-direction: column;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}
+
+.profile-name {
+  font-size: 1.5em;
+  border-bottom: 1px solid #dad7d7;
+  padding: 10px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-info ul{
+  width: 300px;
+}
+
+
+.total-score {
+  margin: auto;
+  text-align: center;
+}
+
+.total-score-number {
+  background-color: #00b5d6;
+  display: block;
+  height: 75px;
+  width: 75px;
+  line-height: 75px;
+  border-radius: 50%;
+  margin: 10px auto;
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+.total-score-label {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4em;
+
 }

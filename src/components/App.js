@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
@@ -10,6 +10,7 @@ import Nav from "./Nav";
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
 import Logout from "./Logout";
+import NotFound from "./NotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -21,9 +22,9 @@ class App extends Component {
       <Router>
         <LoadingBar />
         <div className="container">
+          {this.props.authedUser && <Nav authedUser={this.props.authedUser} />}
           {this.props.authed === true ? (
-            <div>
-              <Nav authedUser={this.props.authedUser} />
+            <Switch>
               <Route path="/" exact component={Dashboard} />
               <Route path="/question/:id" exact component={QuestionPage} />
               <Route path="/new" exact component={NewQuestion} />
@@ -34,10 +35,11 @@ class App extends Component {
               />
               <Route path="/leaderboard" exact component={Leaderboard} />
               <Route path="/logout" exact component={Logout} />
-            </div>
+              <Route component={NotFound} />
+            </Switch>
           ) : (
             <Redirect to="/login" />
-          )}
+            )}
           <Route path="/login" exact component={Login} />
         </div>
       </Router>

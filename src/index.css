@@ -105,7 +105,6 @@ li {
 }
 
 .question-poll {
-  /* width: 100%; */
   max-width: 590px;
   padding: 10px;
   display: flex;
@@ -113,6 +112,7 @@ li {
   margin: 0 auto;
   border: 1px solid #dad7d7;
   border-radius: 3px;
+  margin-top: 40px;
 }
 
 .question-info {

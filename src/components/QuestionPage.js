@@ -15,7 +15,6 @@ function mapStateToProps({ authedUser, questions, users }, props) {
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
       : null,
-    authedUser,
   };
 }
 

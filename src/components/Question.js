@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
+import { formatQuestion } from "../utils/helpers";
 import { Link } from "react-router-dom";
 
 function mapStateToProps({ authedUser, users, questions }, { id, activeTab }) {
@@ -23,7 +23,7 @@ class Question extends Component {
       return <p>This Question does not exist</p>;
     }
 
-    const { name, id, timestamp, avatar, optionOne, optionTwo } = question;
+    const { name, id, avatar, optionOne } = question;
 
     let redirect = "";
     const hasVoted =
@@ -51,12 +51,9 @@ class Question extends Component {
         <div className="profile-name">{name} asks</div>
         <div className="question-info">
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-          {/* <div>{formatDate(timestamp)}</div> */}
           <div>
             <h3>Would you rather</h3>
-            <p>{`...${optionOne.text
-              .slice(0, 15)
-              .trim()}... or...`}</p>
+            <p>{`...${optionOne.text.slice(0, 15).trim()}... or...`}</p>
             <Link to={redirect}>
               <button className="btn">View Poll</button>
             </Link>

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
+import { formatQuestion } from "../utils/helpers";
 import { handleAnswerQuestion } from "../actions/questions";
-import { handleAddAnswerToUser } from "../actions/users";
 import { Redirect } from "react-router-dom";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
   return {
-    authedUser,
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
       : null,
@@ -18,6 +16,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
 class QuestionPoll extends Component {
   state = {
     selected: "",
+    answered: false,
   };
 
   handleSubmit = (e) => {
@@ -25,6 +24,9 @@ class QuestionPoll extends Component {
     const { dispatch } = this.props;
 
     dispatch(handleAnswerQuestion(this.props.question.id, this.state.selected));
+    this.setState({
+      answered: true,
+    });
   };
 
   handleChange = (e) => {
@@ -37,19 +39,10 @@ class QuestionPoll extends Component {
 
   render() {
     const { question } = this.props;
-    // console.log(question)
 
-    const {
-      name,
-      id,
-      timestamp,
-      avatar,
-      optionOne,
-      optionTwo,
-      hasVoted,
-    } = question;
+    const { name, id, avatar, optionOne, optionTwo } = question;
 
-    if (hasVoted) {
+    if (this.state.answered === true) {
       return <Redirect to={`/question/${id}/results`} />;
     }
 
@@ -68,7 +61,7 @@ class QuestionPoll extends Component {
                   type="radio"
                   id="optionOne"
                   name="optionOne"
-                  value="optionOne" // {optionOne.text}
+                  value="optionOne"
                   onChange={this.handleChange}
                   checked={this.state.selected === "optionOne"}
                 />

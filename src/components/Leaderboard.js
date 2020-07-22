@@ -8,21 +8,13 @@ function mapStateToProps({ users }) {
   };
 }
 
-// return {
-//   questionIds: Object.keys(questions).sort(
-//     (a, b) => questions[b].timestamp - questions[a].timestamp
-//   ),
-// };
-
 class Leaderboard extends Component {
   render() {
     const { users } = this.props;
 
-    // console.log("USERS", users)
-
     let sortedUsers = [];
 
-    for (let [key, value] of Object.entries(users)) {
+    for (let value of Object.values(users)) {
       let user = {};
 
       user.id = value.id;
@@ -32,18 +24,15 @@ class Leaderboard extends Component {
       user.questionScore = value.questions.length;
       user.totalScore = user.answerScore + user.questionScore;
 
-      // console.log(user)
       sortedUsers.push(user);
     }
 
     sortedUsers.sort((a, b) => b.totalScore - a.totalScore);
 
-    console.log(sortedUsers);
-
     return (
-      <div>
+      <div className="leaderboard">
         {sortedUsers.map((user) => (
-          <Profile key={user.id} user={user}/>
+          <Profile key={user.id} user={user} />
         ))}
       </div>
     );

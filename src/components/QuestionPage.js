@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Question from "./Question";
-import NewQuestions from "./NewQuestions";
 import QuestionPoll from "./QuestionPoll";
 import QuestionPollAnswer from "./QuestionPollAnswer";
-import { formatQuestion, formatDate } from "../utils/helpers";
+import { formatQuestion } from "../utils/helpers";
 
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
   const question = questions[id];
-  let answered = ''
+  let answered = "";
   if (
     question.optionOne.votes.includes(authedUser) ||
     question.optionTwo.votes.includes(authedUser)
@@ -37,8 +35,6 @@ class QuestionPage extends Component {
     return (
       <div>
         {answered ? <QuestionPollAnswer id={id} /> : <QuestionPoll id={id} />}
-        {/* <QuestionPoll id={id} /> */}
-        {/* <QuestionPollAnswer id={id} /> */}
       </div>
     );
   }

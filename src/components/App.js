@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
@@ -23,7 +23,7 @@ class App extends Component {
         <div className="container">
           {this.props.authed === true ? (
             <div>
-              <Nav authedUser={this.props.authedUser}/>
+              <Nav authedUser={this.props.authedUser} />
               <Route path="/" exact component={Dashboard} />
               <Route path="/question/:id" exact component={QuestionPage} />
               <Route path="/new" exact component={NewQuestion} />
@@ -47,9 +47,6 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    // loading: authedUser === null,
-    // loading: false,
-    // authedUser,
     authed: authedUser !== null,
     authedUser,
   };

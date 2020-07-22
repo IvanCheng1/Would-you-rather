@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatQuestion, formatDate } from "../utils/helpers";
+import { formatQuestion } from "../utils/helpers";
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
@@ -16,23 +16,13 @@ class QuestionPollAnswer extends Component {
   render() {
     const { question, authedUser } = this.props;
 
-    const {
-      name,
-      id,
-      timestamp,
-      avatar,
-      optionOne,
-      optionTwo,
-      hasVoted,
-    } = question;
+    const { name, avatar, optionOne, optionTwo } = question;
 
     const optionOneVotes = optionOne.votes.length;
     const optionTwoVotes = optionTwo.votes.length;
     const voteNumber = optionOneVotes + optionTwoVotes;
     const optionOnePerc = Math.round((1000 * optionOneVotes) / voteNumber) / 10;
     const optionTwoPerc = Math.round((1000 * optionTwoVotes) / voteNumber) / 10;
-
-    // console.log(optionTwo);
 
     return (
       <div className="question-poll">

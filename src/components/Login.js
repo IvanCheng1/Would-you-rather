@@ -30,18 +30,14 @@ class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("about to dispatch");
     const { dispatch } = this.props;
-    // todo: submit user
     dispatch(handleLogin(this.state.selectUser));
-    // console.log("done. dispatched", this.state.selectUser);
   };
 
   render() {
     const { users } = this.props;
 
     const userList = Object.values(users);
-    // console.log(userList);
 
     if (this.props.authedUser) {
       return <Redirect to="/" />;

@@ -139,14 +139,13 @@ li {
 
 .question-votes {
   text-align: center;
-  padding: 10px 0 0 0 ;
+  padding: 10px 0 0 0;
 }
 
 .chosen {
   border: 3px solid rgba(13, 174, 177, 0.776);
   background-color: rgba(13, 174, 177, 0.2);
   position: relative;
-  
 }
 
 .badge {
@@ -198,7 +197,7 @@ li {
   text-align: right;
   margin-top: 10px;
   font-size: 20px;
-  color: #C3392A;
+  color: #c3392a;
 }
 
 .profile {
@@ -222,12 +221,11 @@ li {
   flex-direction: row;
 }
 
-.profile-info ul{
+.profile-info ul {
   width: 250px;
   margin-top: auto;
   margin-bottom: auto;
 }
-
 
 .total-score {
   margin: auto;
@@ -251,7 +249,6 @@ li {
   text-align: center;
   font-weight: bold;
   font-size: 1.4em;
-
 }
 
 .tab {
@@ -273,25 +270,15 @@ li {
   background-color: rgba(13, 174, 177, 0.406);
 }
 
-/* .tab:focus {
-  outline: 0;
-  font-weight: 700;
-} */
-
 .tab-active {
   font-weight: bold;
   background-color: rgba(13, 174, 177, 0.206);
 }
 
 .nav-tabs {
-  /* width: 600px; */
   display: flex;
-  /* flex-direction: row; */
   justify-content: flex-start;
   text-decoration: none;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
-;
 }
 
 .nav-tabs ul {
@@ -315,14 +302,9 @@ form div {
   background-color: rgba(13, 174, 177, 0.776);
   height: 30px;
   border-radius: 3px;
-  /* text-align: right; */
-  /* padding-right: 10px; */
 }
 
 .percentage-number {
-
-  /* height: 30px; */
-  /* border-radius: 5px; */
   text-align: right;
   padding-right: 4px;
   line-height: 30px;
@@ -355,4 +337,8 @@ form div {
   width: 250px;
   height: 40px;
   margin: 10px auto;
+}
+
+.leaderboard {
+  margin-top: 40px;
 }

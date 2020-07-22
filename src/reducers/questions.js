@@ -9,15 +9,11 @@ export default function questions(state = {}, action) {
         ...action.questions,
       };
     case ADD_QUESTION :
-      // const { question } = action 
-      // console.log("here", action)
       return {
         ...state,
         [action.question.id]: action.question
       }
     case ANSWER_QUESTION :
-      // console.log("ANSWER state",state)
-      // console.log("ANSWER action",action)
       return {
         ...state,
         [action.qid]: {

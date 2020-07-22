@@ -48,15 +48,19 @@ class Question extends Component {
 
     return (
       <div className="question">
-        <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
-
+        <div className="profile-name">{name} asks</div>
         <div className="question-info">
-          <span>{name}</span>
-          <div>{formatDate(timestamp)}</div>
-          <p>{`Would you rather ${optionOne.text.slice(0, 15).trim()}... or...`}</p>
-          <Link to={redirect}>
-            <button className="btn">View Poll</button>
-          </Link>
+          <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+          {/* <div>{formatDate(timestamp)}</div> */}
+          <div>
+            <h3>Would you rather</h3>
+            <p>{`...${optionOne.text
+              .slice(0, 15)
+              .trim()}... or...`}</p>
+            <Link to={redirect}>
+              <button className="btn">View Poll</button>
+            </Link>
+          </div>
         </div>
       </div>
     );

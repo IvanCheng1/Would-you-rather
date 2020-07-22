@@ -35,7 +35,7 @@ class NewQuestions extends Component {
 
     dispatch(handleAddQuestion(optionOneText, optionTwoText));
 
-    console.log("adding:", optionOneText, optionTwoText);
+    // console.log("adding:", optionOneText, optionTwoText);
     // todo: Add question to Store
 
     this.setState({

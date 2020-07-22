@@ -10,6 +10,7 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
       : null,
+    authedUser,
   };
 }
 
@@ -38,6 +39,10 @@ class QuestionPoll extends Component {
   };
 
   render() {
+    if (!this.props.authedUser) {
+      return <Redirect to="/login" />;
+    }
+
     const { question } = this.props;
 
     const { name, id, avatar, optionOne, optionTwo } = question;

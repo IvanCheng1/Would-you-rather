@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { handleAddQuestion } from "../actions/questions";
 import { Redirect } from "react-router-dom";
 
-function mapStateToProps(state) {
-  return {};
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  };
 }
 
 class NewQuestions extends Component {
@@ -43,6 +45,10 @@ class NewQuestions extends Component {
   };
 
   render() {
+    if (!this.props.authedUser) {
+      return <Redirect to="/login" />;
+    }
+
     const { optionOneText, optionTwoText, toHome } = this.state;
 
     if (toHome === true) {

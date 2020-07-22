@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
@@ -23,24 +28,21 @@ class App extends Component {
         <LoadingBar />
         <div className="container">
           {this.props.authedUser && <Nav authedUser={this.props.authedUser} />}
-          {this.props.authed === true ? (
-            <Switch>
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/question/:id" exact component={QuestionPage} />
-              <Route path="/new" exact component={NewQuestion} />
-              <Route
-                path="/question/:id/results"
-                exact
-                component={QuestionPage}
-              />
-              <Route path="/leaderboard" exact component={Leaderboard} />
-              <Route path="/logout" exact component={Logout} />
-              <Route component={NotFound} />
-            </Switch>
-          ) : (
-            <Redirect to="/login" />
-            )}
-          <Route path="/login" exact component={Login} />
+
+          <Switch>
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/question/:id" exact component={QuestionPage} />
+            <Route path="/new" exact component={NewQuestion} />
+            <Route
+              path="/question/:id/results"
+              exact
+              component={QuestionPage}
+            />
+            <Route path="/leaderboard" exact component={Leaderboard} />
+            <Route path="/logout" exact component={Logout} />
+            <Route path="/login" exact component={Login} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </Router>
     );

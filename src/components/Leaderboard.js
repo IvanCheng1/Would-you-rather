@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Profile from "./Profile";
+import { Redirect } from "react-router-dom";
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
     users,
+    authedUser,
   };
 }
 
 class Leaderboard extends Component {
   render() {
+    if (!this.props.authedUser) {
+      return <Redirect to="/login" />;
+    }
+
     const { users } = this.props;
 
     let sortedUsers = [];

@@ -342,3 +342,7 @@ form div {
 .leaderboard {
   margin-top: 40px;
 }
+
+.page-not-found h2 {
+  text-align: center;
+}

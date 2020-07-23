@@ -19,6 +19,7 @@ class Login extends Component {
 
   state = {
     selectUser: "choose",
+    redirectToReferrer: false,
   };
 
   handleChange = (e) => {
@@ -32,15 +33,21 @@ class Login extends Component {
     e.preventDefault();
     const { dispatch } = this.props;
     dispatch(handleLogin(this.state.selectUser));
+    this.setState({
+      redirectToReferrer: true,
+    });
   };
 
   render() {
     const { users } = this.props;
-
     const userList = Object.values(users);
 
-    if (this.props.authedUser) {
-      return <Redirect to="/" />;
+    // source: https://ui.dev/react-router-v4-protected-routes-authentication/
+
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+
+    if (this.state.redirectToReferrer === true) {
+      return <Redirect to={from} />;
     }
 
     return (

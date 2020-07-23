@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading";
 import NewQuestion from "./NewQuestions";
 import QuestionPage from "./QuestionPage";
+import ProtectedRoute from "./ProtectedRoute";
 import Nav from "./Nav";
 import Leaderboard from "./Leaderboard";
 import Login from "./Login";
@@ -22,21 +23,17 @@ class App extends Component {
       <Router>
         <LoadingBar />
         <div className="container">
-          {this.props.authedUser && <Nav authedUser={this.props.authedUser} />}
-
+          <Nav authedUser={this.props.authedUser} />
           <Switch>
-            <Route path="/" exact component={Dashboard} />
-            <Route path="/question/:id" exact component={QuestionPage} />
-            <Route path="/new" exact component={NewQuestion} />
-            <Route
-              path="/question/:id/results"
-              exact
-              component={QuestionPage}
-            />
-            <Route path="/leaderboard" exact component={Leaderboard} />
+            <ProtectedRoute path="/" exact authedUser={this.props.authedUser} component={Dashboard} />
+            <ProtectedRoute path="/question/:id" exact authedUser={this.props.authedUser} component={QuestionPage} />
+            <ProtectedRoute path="/new" exact authedUser={this.props.authedUser} component={NewQuestion} />
+            <ProtectedRoute path="/question/:id/results" exact authedUser={this.props.authedUser} component={QuestionPage} />
+            <ProtectedRoute path="/leaderboard" exact authedUser={this.props.authedUser} component={Leaderboard} />
             <Route path="/logout" exact component={Logout} />
             <Route path="/login" exact component={Login} />
-            <Route component={NotFound} />
+            <Route path="/404" component={NotFound} />
+            <Redirect to="/404" />
           </Switch>
         </div>
       </Router>

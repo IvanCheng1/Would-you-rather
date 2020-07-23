@@ -12,6 +12,10 @@ function mapStateToProps({ users }, { authedUser }) {
 class Nav extends Component {
   render() {
     const { users, authedUser } = this.props;
+    let name = "";
+    if (authedUser) {
+      name = users[authedUser].name;
+    }
 
     return (
       <nav className="nav">
@@ -32,16 +36,18 @@ class Nav extends Component {
             </NavLink>
           </li>
         </ul>
-        <ul className="login">
-          <li>
-            <span>Hello, {users[authedUser].name}</span>
-          </li>
-          <li>
-            <NavLink to="/logout" exact activeClassName="active">
-              Logout
-            </NavLink>
-          </li>
-        </ul>
+        {authedUser && (
+          <ul className="login">
+            <li>
+              <span>Hello, {name}</span>
+            </li>
+            <li>
+              <NavLink to="/logout" exact activeClassName="active">
+                Logout
+              </NavLink>
+            </li>
+          </ul>
+        )}
       </nav>
     );
   }

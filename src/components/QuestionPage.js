@@ -25,6 +25,10 @@ class QuestionPage extends Component {
     }
     const { id, authedUser, question } = this.props;
 
+    if (question === null) {
+      return <Redirect to="/404" />;
+    }
+
     let answered = "";
     if (
       question.optionOne.votes.includes(authedUser) ||

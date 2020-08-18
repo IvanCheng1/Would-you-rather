@@ -5,7 +5,7 @@ A React web application that allows a user to play the game "Would you Rather?".
 Website is hosted at [Netlify](https://would-you-rather-react.netlify.app/).
 
 <p align="center">
-  <img src="./src/images/homepage.png" width='500'/>
+  <img src="./src/gifs/example.gif" width='450'/>
 </p>
 
 ## Instructions
